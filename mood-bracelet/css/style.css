@@ -1,0 +1,397 @@
+:root {
+    --primary-color: #ff69b4;
+    --secondary-color: #ffd1dc;
+    --accent-color: #ff4d94;
+    --text-color: #4a4a4a;
+    --background-color: #fff5f7;
+    --border-radius: 20px;
+    --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+    /* Charm category colors */
+    --charm-needs-color: #f98fb9;      /* Pastel pink */
+    --charm-mood-color: #d6f998;       /* Pastel red */
+    --charm-boundaries-color: #cda8f5;  /* Purple/violet with pink tint */
+    --charm-activity-color: #9dfac2;    /* Pastel mint */
+    --charm-physical-color: #fbd99e;    /* Yellow pastel with pink tint */
+    --charm-identity-color: #a1c1fc;    /* Stronger pastel blue */
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body {
+    font-family: 'Comic Sans MS', 'Arial', sans-serif;
+    background: linear-gradient(-45deg, #ffd1dc, #ffc0cb, #ffb6c1, #fff0f5);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    margin: 0;
+    padding: 20px;
+    color: var(--text-color);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    width: 95%; /* Ensure some margin on mobile */
+}
+
+h1 {
+    color: var(--primary-color);
+    text-align: center;
+    font-size: clamp(2rem, 4vw, 2.5em);
+    margin-bottom: clamp(20px, 4vw, 30px);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+h1::before, h1::after {
+    content: '💝';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+h1::before {
+    left: clamp(5px, 2vw, 20px);
+}
+
+h1::after {
+    right: clamp(5px, 2vw, 20px);
+}
+
+h2 {
+    color: var(--primary-color);
+    text-align: center;
+    font-size: clamp(1.3rem, 3vw, 1.8em);
+    margin-bottom: clamp(15px, 3vw, 20px);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    padding: 0 10px;
+}
+
+/* Responsive header adjustments */
+@media (max-width: 768px) {
+    h1 {
+        padding: 0 30px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        padding: 0 25px;
+        margin-bottom: 15px;
+    }
+    
+    h1::before, h1::after {
+        font-size: 1.2rem;
+    }
+}
+
+.charm-grid {
+    display: grid;
+    gap: 20px;
+    padding: 20px;
+    /* Desktop default - 3 sections per row */
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.category-section {
+    grid-column: span 2;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    box-shadow: var(--box-shadow);
+    min-width: 0; /* Prevents overflow on small screens */
+}
+
+.category-section h3 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.4em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 10px;
+}
+
+.category-grid {
+    display: grid;
+    gap: 15px;
+    padding: 10px;
+    /* Default 3 charms per row in each category */
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+}
+
+/* Large tablets and small desktops */
+@media (max-width: 1200px) {
+    .charm-grid {
+        /* 2 sections per row */
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    .charm-grid {
+        /* 1 section per row */
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .category-section {
+        grid-column: span 2;
+    }
+
+    .category-grid {
+        /* 4 charms per row in each category */
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    }
+
+    .container {
+        padding: 10px;
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+    .charm-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 10px;
+    }
+
+    .category-section {
+        grid-column: span 1;
+    }
+
+    .category-grid {
+        /* 3 charms per row in each category */
+        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+        gap: 10px;
+    }
+
+    .container {
+        padding: 5px;
+    }
+
+    h1 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+    }
+}
+
+/* Base charm styles */
+.charm {
+    border-radius: 50%;
+    background-size: 85%;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90px;
+    height: 90px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    border: 3px solid transparent;
+    font-size: 2.5em;
+}
+
+
+
+.sub-charm {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    background-color: transparent;
+}
+
+.sub-charm-1 {
+    grid-column: 1 / -1;
+}
+
+.sub-charm-2 {
+    grid-column: span 1;
+    transform: scale(0.8);
+}
+
+
+
+/* Category-specific charm backgrounds with pink tints */
+[data-category="needs"] .charm, 
+.charm[data-category="needs"] {
+    background-color: var(--charm-needs-color);
+}
+
+[data-category="boundaries"] .charm,
+.charm[data-category="boundaries"] {
+    background-color: var(--charm-boundaries-color);
+}
+
+[data-category="mood"] .charm,
+.charm[data-category="mood"] {
+    background-color: var(--charm-mood-color);
+}
+
+[data-category="activity"] .charm,
+.charm[data-category="activity"] {
+    background-color: var(--charm-activity-color);
+}
+
+[data-category="physical"] .charm,
+.charm[data-category="physical"] {
+    background-color: var(--charm-physical-color);
+}
+
+[data-category="identity"] .charm,
+.charm[data-category="identity"] {
+    background-color: var(--charm-identity-color);
+}
+
+/* Combined charm styles */
+.charm.combined-charm {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    padding: 5px;
+}
+
+@media (max-width: 768px) {
+    .charm {
+        width: 80px;
+        height: 80px;
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 480px) {
+    .charm {
+        width: 70px;
+        height: 70px;
+        font-size: 1.8em;
+    }
+}
+
+.charm.emoji-fallback {
+    background-color: var(--secondary-color);
+    background-image: none !important;
+}
+
+.charm:hover {
+    transform: scale(1.1);
+}
+
+.charm.selected {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+}
+
+.bracelet-container {
+    position: relative;
+    padding: 20px;
+    margin: 20px 0;
+    background: linear-gradient(45deg, #ffd700, #ffa500);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.bracelet {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    min-height: 120px;
+}
+
+/* Create space between outer and inner border for jewels */
+.bracelet-container {
+    padding: 30px;
+}
+
+.bracelet {
+    outline: 2px solid rgba(255, 215, 0, 0.3);
+    outline-offset: -8px;
+}
+
+/* Jewels decoration */
+.bracelet::before {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    border-radius: 15px;
+    background:
+        radial-gradient(circle at 1.5% 3%, var(--primary-color) 0, var(--primary-color) 6px, transparent 7px),
+        radial-gradient(circle at 33% 3%, var(--primary-color) 0, var(--primary-color) 6px, transparent 7px),
+        radial-gradient(circle at 66% 3%, var(--primary-color) 0, var(--primary-color) 6px, transparent 7px),
+        radial-gradient(circle at 99% 3.5%, var(--primary-color) 0, var(--primary-color) 6px, transparent 7px),
+        
+        radial-gradient(circle at .75% 95%, var(--primary-color) 0, var(--primary-color) 6px, transparent 7px),
+        radial-gradient(circle at 33% 97%, var(--primary-color) 0, var(--primary-color) 6px, transparent 7px),
+        radial-gradient(circle at 66% 97%, var(--primary-color) 0, var(--primary-color) 6px, transparent 7px),
+        radial-gradient(circle at 99.25% 95%, var(--primary-color) 0, var(--primary-color) 6px, transparent 7px),
+        
+        radial-gradient(circle at 0.5% 50%, var(--primary-color) 0, var(--primary-color) 6px, transparent 7px),
+        radial-gradient(circle at 99.5% 50%, var(--primary-color) 0, var(--primary-color) 6px, transparent 7px);
+    pointer-events: none;
+    filter: drop-shadow(0 0 3px rgba(255, 105, 180, 0.6));
+    animation: jewel-sparkle .1s ease-in-out infinite alternate;
+}
+
+/* Sparkle effect */
+.bracelet::after {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    border-radius: 15px;
+    background:
+        radial-gradient(circle at 1.5% 3%, white 0, white 2px, transparent 3px),
+        radial-gradient(circle at 33% 3%, white 0, white 2px, transparent 3px),
+        radial-gradient(circle at 66% 3%, white 0, white 2px, transparent 3px),
+        radial-gradient(circle at 99% 3.5%, white 0, white 2px, transparent 3px),
+        
+        radial-gradient(circle at 0.75% 95%, white 0, white 2px, transparent 3px),
+        radial-gradient(circle at 33% 97%, white 0, white 2px, transparent 3px),
+        radial-gradient(circle at 66% 97%, white 0, white 2px, transparent 3px),
+        radial-gradient(circle at 99.25% 95%, white 0, white 2px, transparent 3px),
+        
+        radial-gradient(circle at 0.5% 50%, white 0, white 2px, transparent 3px),
+        radial-gradient(circle at 99.5% 50%, white 0, white 2px, transparent 3px);
+    opacity: 0;
+    pointer-events: none;
+    animation: sparkle-fade 1s ease-in-out infinite alternate;
+}
+
+@keyframes jewel-sparkle {
+    from { filter: drop-shadow(0 0 3px rgba(255, 105, 180, 0.6)); }
+    to { filter: drop-shadow(0 0 5px rgba(255, 105, 180, 0.8)); }
+}
+
+@keyframes sparkle-fade {
+    from { opacity: 0; }
+    to { opacity: 0.5; }
+}
+

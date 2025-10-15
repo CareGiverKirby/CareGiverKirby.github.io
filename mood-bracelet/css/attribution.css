@@ -1,0 +1,18 @@
+.attribution {
+    margin-top: 40px;
+    padding: 20px;
+    border-top: 1px solid var(--secondary-color);
+    text-align: center;
+    font-size: 0.8em;
+    color: #666;
+}
+
+.attribution ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.attribution li {
+    margin: 5px 0;
+}
