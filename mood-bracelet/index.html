@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little's Charm Bracelet</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/tooltips.css">
+    <link rel="stylesheet" href="css/bracelet.css">
+    <link rel="stylesheet" href="css/share.css">
+    <link rel="stylesheet" href="css/attribution.css">
+</head>
+<body>
+    <div class="container">
+        <h1>My Charm Bracelet</h1>
+        
+        <div class="charm-selector">
+            <h2>How are you feeling today, little one?</h2>
+            <div id="charmGrid" class="charm-grid"></div>
+        </div>
+
+        <div class="bracelet-display">
+            <h2>Your Charm Collection</h2>
+            <div class="bracelet-container">
+                <div id="bracelet" class="bracelet"></div>
+            </div>
+        </div>
+
+        <div class="share-section">
+            <button id="shareButton" class="share-button">Share with Caregiver</button>
+        </div>
+
+        <!-- Share Lightbox -->
+        <div id="shareLightbox" class="lightbox-overlay">
+            <div class="lightbox-content">
+                <button class="close-lightbox">&times;</button>
+                <h3 class="lightbox-title">Share My Bracelet with Caregiver</h3>
+                <div class="share-url-container">
+                    <input type="text" id="shareUrl" class="share-url" readonly>
+                    <button id="copyButton" class="copy-button">Copy</button>
+                </div>
+                <div id="copySuccess" class="copy-success">Link copied! 💝</div>
+            </div>
+        </div>
+        
+        <footer class="attribution">
+            <p>Icons provided by:</p>
+            <ul>
+                <li>OpenMoji - the open-source emoji and icon project (CC BY-SA 4.0)</li>
+                <li>SVG Repo - Kawaii Emoji Set (CC0)</li>
+                <li>Various artists from Flaticon.com</li>
+            </ul>
+        </footer>
+    </div>
+
+    <script src="js/charms.js"></script>
+    <script src="js/bracelet.js"></script>
+</body>
+</html>
